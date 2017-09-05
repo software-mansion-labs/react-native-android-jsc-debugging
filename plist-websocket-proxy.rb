@@ -139,6 +139,13 @@ class Proxy < Sinatra::Base
     end)
   end
 
+  get '/json/version' do
+    json(
+      Browser: 'Android/ReactNative debug bridge',
+      :'Protocol-Version' => '1.2'
+    )
+  end
+
   get '/ws/:number' do
     if !request.websocket?
       "go to /"
