@@ -4,13 +4,13 @@ Allows to use Chrome Debugger against ReactNative applications, while still runn
 
 ## How to use it all?
 
-1. Compile android-jsc using https://github.com/SoftwareMansion/jsc-android-buildscripts/tree/reactNativeDebugger (use https://github.com/ukasiu/webkit/tree/reactNativeDebugger for webkit sources)
-2. Build ReactNative application using android-jsc from step 1
+1. Compile android-jsc using https://github.com/SoftwareMansion/jsc-android-buildscripts/tree/reactNativeDebugger (use https://github.com/ukasiu/webkit/tree/reactNativeDebugger for webkit sources) or use precompiled version from releases (only armv7)
+2. Build ReactNative application using jsc-android from step 1
 3. Run ReactNative application on Android device
 4. Keep Android device connected to the computer
 5. Execute `adb forward tcp:9123 tcp:9123`
 6. Run `plist-websocket-proxy.rb`
-7. Run https://gl.swmansion.com/lukasz-gurdek/remotedebug-ios-webkit-adapter/tree/reactNativeDebugger
+7. Run https://github.com/ukasiu/remotedebug-ios-webkit-adapter/tree/reactNativeDebugger
 8. Navigate to `chrome://inspect` in a Chrome browser
 9. Click on `Configure` and add `localhost:9000`
 
