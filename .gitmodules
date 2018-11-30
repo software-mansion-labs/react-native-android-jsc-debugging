@@ -1,0 +1,9 @@
+[submodule "jsc-android-buildscripts"]
+	path = jsc-android-buildscripts
+	url = git@github.com:react-community/jsc-android-buildscripts.git
+[submodule "react-native"]
+	path = react-native
+	url = git@github.com:SoftwareMansion/react-native.git
+[submodule "remotedebug-ios-webkit-adapter"]
+	path = remotedebug-ios-webkit-adapter
+	url = https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter.git
