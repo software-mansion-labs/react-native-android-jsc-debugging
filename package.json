@@ -1,0 +1,20 @@
+{
+  "name": "react-native-android-jsc-debugging",
+  "version": "1.0.0",
+  "description": "Allows to use Chrome Debugger against ReactNative applications, while still running on Android device.",
+  "main": "index.js",
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "start": "./scripts/start.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoftwareMansion/react-native-android-jsc-debugging.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoftwareMansion/react-native-android-jsc-debugging/issues"
+  },
+  "homepage": "https://github.com/SoftwareMansion/react-native-android-jsc-debugging#readme"
+}

@@ -128,7 +128,9 @@ diff --git a/src/server.ts b/src/server.ts
 index 266697d..e6d775b 100644
 --- a/src/server.ts
 +++ b/src/server.ts
-@@ -48,7 +48,7 @@ export class ProxyServer extends EventEmitter {
+@@ -47,8 +47,8 @@ export class ProxyServer extends EventEmitter {
+-        const port = this._hs.address().port;
++        const port = (this._hs.address() as any).port;
  
          const settings = await IOSAdapter.getProxySettings({
              proxyPath: null,

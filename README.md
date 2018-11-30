@@ -2,7 +2,14 @@
 
 Allows to use Chrome Debugger against ReactNative applications, while still running on Android device.
 
-## How to use it all?
+## How to use with scripts
+
+1. `npm run build`
+2. Connect react native application (description bellow)
+3. Start app
+4. `npm run start`
+
+## How to use it manually
 
 1. Compile android-jsc
 ```
