@@ -15,13 +15,10 @@ Allows to use Chrome Debugger against ReactNative applications, while still runn
 ```
 cd ./jsc-android-buildscripts && npm run download &&  npm run start
 ```
-Dependinging on what build you need
- - `./jsc-android-buildscripts/scripts/start.sh` intl and non intl build (default intl)
- - `./jsc-android-buildscripts/scripts/start.sh` enabling/disabling architectures (default arm only)
 
 2. Connect react native application
  
-```g diff 7742968 example```
+```git diff 7742968 example```
 ```patch
 diff --git a/example/android/app/build.gradle b/example/android/app/build.gradle
 index 64b7095..4004e6c 100644
