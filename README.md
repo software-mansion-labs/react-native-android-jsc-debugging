@@ -21,33 +21,26 @@ Dependinging on what build you need
 
 2. Connect react native application
  
-`settings.gradle`
+```g diff 7742968 example```
 ```patch
-+include ':ReactAndroid'
-+project(':ReactAndroid').projectDir = new File(rootProject.projectDir, '../../react-native/ReactAndroid')
-```
-
-`package.json`
-```patch
-+    "react-native": "0.58.0-rc.0",
-```
-
-`build.gradle`
-```patch
-+        classpath 'de.undercouch:gradle-download-task:3.4.3'
-```
-```patch
-         maven {
--            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
--            url "$rootDir/../node_modules/react-native/android"
-+            // Local Maven repo containing AARs with JSC library built for Android
-+            url "path_to_jsc_android_buildscripts_dir/jsc-android-buildscripts/dist"
-         }
-
-```
-
-`app/build.gradle`
-```patch
+diff --git a/example/android/app/build.gradle b/example/android/app/build.gradle
+index 64b7095..4004e6c 100644
+--- a/example/android/app/build.gradle
++++ b/example/android/app/build.gradle
+@@ -136,10 +136,30 @@ android {
+     }
+ }
+ 
++
++// no intl build
++//configurations.all {
++//    resolutionStrategy {
++//        force 'org.webkit:android-jsc:r236355'
++//    }
++//}
++
++
++// intl build
 +configurations.all {
 +    resolutionStrategy {
 +        eachDependency { DependencyResolveDetails details ->
@@ -57,7 +50,6 @@ Dependinging on what build you need
 +        }
 +    }
 +}
-+
  dependencies {
      implementation fileTree(dir: "libs", include: ["*.jar"])
      implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
@@ -65,6 +57,63 @@ Dependinging on what build you need
 +    api project(":ReactAndroid")
 +    api 'org.webkit:android-jsc:r236355'
  }
+ 
+ // Run this once to be able to run the application with BUCK
+diff --git a/example/android/build.gradle b/example/android/build.gradle
+index a1e8085..8ee4e83 100644
+--- a/example/android/build.gradle
++++ b/example/android/build.gradle
+@@ -14,6 +14,7 @@ buildscript {
+     }
+     dependencies {
+         classpath 'com.android.tools.build:gradle:3.1.4'
++        classpath 'de.undercouch:gradle-download-task:3.4.3'
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
+@@ -26,8 +27,8 @@ allprojects {
+         google()
+         jcenter()
+         maven {
+-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+-            url "$rootDir/../node_modules/react-native/android"
++            // Local Maven repo containing AARs with JSC library built for Android
++            url "$rootDir/../../jsc-android-buildscripts/dist"
+         }
+     }
+ }
+diff --git a/example/android/settings.gradle b/example/android/settings.gradle
+index 13df8b5..8f98edd 100644
+--- a/example/android/settings.gradle
++++ b/example/android/settings.gradle
+@@ -1,3 +1,7 @@
+ rootProject.name = 'example'
+ 
+ include ':app'
++
++include ':ReactAndroid'
++project(':ReactAndroid').projectDir = new File(rootProject.projectDir, '../../react-native/ReactAndroid')
++// project(':ReactAndroid').projectDir = new File(PATH_TO_RN_DIRECTORY, 'react-native/ReactAndroid')
+diff --git a/example/package.json b/example/package.json
+index 74209e2..e14c52e 100644
+--- a/example/package.json
++++ b/example/package.json
+@@ -8,7 +8,7 @@
+   },
+   "dependencies": {
+     "react": "16.6.1",
+-    "react-native": "0.57.7"
++    "react-native": "0.58.0-rc.0"
+   },
+   "devDependencies": {
+     "babel-jest": "23.6.0",
+@@ -19,4 +19,4 @@
+   "jest": {
+     "preset": "react-native"
+   }
+-}
+\ No newline at end of file
++}
 ```
 
 3. Build

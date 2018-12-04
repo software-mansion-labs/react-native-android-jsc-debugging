@@ -4,4 +4,4 @@ include ':app'
 
 include ':ReactAndroid'
 project(':ReactAndroid').projectDir = new File(rootProject.projectDir, '../../react-native/ReactAndroid')
-// project(':ReactAndroid').projectDir = new File(PATH_TO_YOUR_PROJECT, 'react-native/ReactAndroid')
+// project(':ReactAndroid').projectDir = new File(PATH_TO_RN_DIRECTORY, 'react-native/ReactAndroid')
