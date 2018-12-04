@@ -11,7 +11,7 @@ ensureSubmodules() {
 
 buildJsc() {
     cd $ROOTDIR/jsc-android-buildscripts
-    if [[ ! -d $ROOTDIR/jsc-android-buildscripts/target/download ]]; then
+    if [[ ! -d $ROOTDIR/jsc-android-buildscripts/build/download ]]; then
         yarn run download
     fi
     yarn start
